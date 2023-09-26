@@ -31,8 +31,8 @@ playRound = function() {
     const cpu = getComputerChoice()
     const player = playerSelection()
 
-    console.log(cpu)
-    console.log(player)
+    //console.log(cpu)
+    //console.log(player)
 
     if (cpu === player) {
         console.log(`Draw, both got ${selection[player]}`)
@@ -55,9 +55,9 @@ game = function() {
     let totalCPU = 0
     let draw =0
 
-    for(let i=0; i<5; i++){
+    while (totalPlayer < 5 && totalCPU < 5) {
         let result = playRound()
-        console.log(`I'm in the loop ${i}`)
+
         switch (result) {
             case 1: 
                 totalPlayer++;
@@ -68,8 +68,10 @@ game = function() {
             case 0: 
                 draw++;
                 break;
-
         }
+
+        console.log(totalPlayer)
+        console.log(totalCPU)
     }
 
     let message = ""
@@ -79,10 +81,6 @@ game = function() {
 
     else if (totalCPU > totalPlayer) {
         message = "YOU ARE THE LOSER"
-    }
-
-    else {
-        message = "WE HAVE A DRAW"
     }
 
     console.log(`The final score is:
