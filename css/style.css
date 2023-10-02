@@ -7,6 +7,11 @@
 body {
   text-align: center;
 }
+body main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 body main .selection ul {
   justify-content: center;
   align-items: center;
@@ -20,7 +25,9 @@ body main .selection ul li:hover {
   transform: rotate(360deg);
 }
 body main .results {
-  margin-top: 10vh;
+  background-color: lightgray;
+  margin-top: 100px;
+  flex-grow: 1;
 }
 body main .results .container {
   justify-content: center;
