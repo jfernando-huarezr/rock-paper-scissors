@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    text-align: center;
+
+    main {
+
+        .selection {
+            ul {
+                justify-content: center;
+                align-items: center;
+                gap: 100px;
+
+                li {
+                    width: 300px;
+                    transition: transform 0.3s
+                }
+
+                li:hover {
+                    transform: rotate(360deg);
+                }
+            }
+
+        }
+
+        .results {
+            margin-top: 10vh;
+            .container {
+                justify-content: center;
+                gap: 100px;
+            }
+        }
+
+    }
+}
+
+
+
+li {
+    list-style-type: none;
+}
+
+img {
+    width: 100%;
+}
+
+.spacing {
+    margin-top: 20px;
+}
+
+.spacing-game {
+    margin-top: 100px;
+}
+
+.container {
+    display: flex;
+}
