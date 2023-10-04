@@ -12,59 +12,62 @@ export function game() {
 
     images.forEach(image => {
         image.addEventListener('mouseenter', () => {
-            const picture = image.querySelector('img')
-            switch (picture.getAttribute('alt')) {
-                case 'rock': picture.setAttribute('src', './img/rock2.jpeg'); break
-                case 'paper': picture.setAttribute('src', './img/paper2.jpeg'); break
-                case 'scissors': picture.setAttribute('src', './img/scissors2.jpeg'); break
+            const $picture = image.querySelector('img')
+            switch ($picture.getAttribute('alt')) {
+                case 'rock': $picture.setAttribute('src', './img/rock2.jpeg'); break
+                case 'paper': $picture.setAttribute('src', './img/paper2.jpeg'); break
+                case 'scissors': $picture.setAttribute('src', './img/scissors2.jpeg'); break
             }
         })
 
         image.addEventListener('mouseleave', () => {
-            const picture = image.querySelector('img')
+            const $picture = image.querySelector('img')
 
-            switch (picture.getAttribute('alt')) {
-                case 'rock': picture.setAttribute('src', './img/rock1.jpeg'); break
-                case 'paper': picture.setAttribute('src', './img/paper1.jpeg'); break
-                case 'scissors': picture.setAttribute('src', './img/scissors1.jpeg'); break
+            switch ($picture.getAttribute('alt')) {
+                case 'rock': $picture.setAttribute('src', './img/rock1.jpeg'); break
+                case 'paper': $picture.setAttribute('src', './img/paper1.jpeg'); break
+                case 'scissors': $picture.setAttribute('src', './img/scissors1.jpeg'); break
             }
         })
 
         image.addEventListener('click', ()=> {
-            const play = image.querySelector('img').getAttribute('alt')
-            result = playRound(play)
+            const $play = image.querySelector('img').getAttribute('alt')
+            
 
-            switch (result) {
-                case 1: 
-                    totalPlayer++;
-                    break;
-                case -1: 
-                    totalCPU++
-                    break;
-                case 0: 
-                    draw++;
-                    break;
-            }
+            if (totalPlayer < 5 && totalCPU < 5) {              
+                result = playRound($play)
+
+                switch (result) {
+                    case 1: 
+                        totalPlayer++;
+                        break;
+                    case -1: 
+                        totalCPU++
+                        break;
+                    case 0: 
+                        draw++;
+                        break;
+                }
     
-            console.log(totalPlayer)
-            console.log(totalCPU)
+                const $totalPlayer = document.querySelector('.hero p')
+                const $totalCPU = document.querySelector('.terminator p')
+
+                $totalPlayer.textContent = totalPlayer
+                $totalCPU.textContent = totalCPU                
+            }
+            
         
-            if (totalPlayer === 5 || totalCPU === 5) {    
+            if (totalPlayer === 5 || totalCPU === 5) {  
+                const $message = document.querySelector('.selection h4')
+
             
                 if (totalPlayer > totalCPU){
-                    message = "YOU ARE THE WINNER!"
+                    $message.textContent = "YOU ARE THE WINNER!"
                 }
     
                 else if (totalCPU > totalPlayer) {
-                    message = "YOU ARE THE LOSER!"
+                    $message.textContent = "YOU ARE THE LOSER!"
                 }    
-    
-                console.log(`The final score is:
-                        Player: ${totalPlayer}
-                        CPU: ${totalCPU}
-                        Draws: ${draw}
-                        
-                        ${message}`)
             }
         })
     })            
